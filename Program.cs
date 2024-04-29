@@ -65,6 +65,10 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/Contacto/swagger.json", "Contacto");
 });
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
