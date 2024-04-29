@@ -20,6 +20,7 @@ builder.Services.AddControllers()
         x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddCors();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("Contacto", new OpenApiInfo
@@ -64,6 +65,10 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/Contacto/swagger.json", "Contacto");
 });
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
